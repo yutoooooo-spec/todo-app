@@ -1,5 +1,23 @@
 <h1>ToDoリスト</h1>
+<%= form_with url: users_path, method: :post, local: true do |form| %>
+  <div>
+    <%= form.label :task, "task" %><br>
+    <%= form.text_field :task %>
+  </div>
+
+  <div>
+    <%= form.label :date, "date" %><br>
+    <%= form.text_field :date %>
+  </div>
+
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>
+
 
 <% @todos.each do |todo| %>
     <li><%= todo.task %> - <%= todo.date %></li>
+    <%= button_to "削除", user_path(todo), method: :delete, data: { confirm: "本当に削除しますか？" } %>
 <% end %>
+
